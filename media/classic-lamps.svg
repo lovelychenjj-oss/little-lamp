@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="460" viewBox="0 0 1080 460">
+<title>小灯当家：蘑菇灯、布罩灯、球形灯</title><desc>依据应用 CSS 造型绘制的三款台灯示意，分别用旋钮、拉绳和触摸手势切换模式。</desc>
+<defs>
+ <linearGradient id="brass"><stop stop-color="#80612b"/><stop offset=".45" stop-color="#dfc784"/><stop offset="1" stop-color="#94723b"/></linearGradient>
+ <radialGradient id="green" cx="34%" cy="12%" r="90%"><stop stop-color="#b8c49f"/><stop offset=".45" stop-color="#8e9e79"/><stop offset="1" stop-color="#65764f"/></radialGradient>
+ <linearGradient id="greenBase"><stop stop-color="#93a17d"/><stop offset="1" stop-color="#67774f"/></linearGradient>
+ <linearGradient id="cloth"><stop stop-color="#fff7dc"/><stop offset=".74" stop-color="#d9c79c"/><stop offset="1" stop-color="#bca776"/></linearGradient>
+ <linearGradient id="wood"><stop stop-color="#c8aa7c"/><stop offset="1" stop-color="#856749"/></linearGradient>
+ <radialGradient id="sphere" cx="30%" cy="24%" r="82%"><stop stop-color="#fffef4"/><stop offset=".57" stop-color="#fff3ca"/><stop offset="1" stop-color="#c3b485"/></radialGradient>
+ <linearGradient id="grey"><stop stop-color="#b4bcb6"/><stop offset="1" stop-color="#728077"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#ffdba0" stop-opacity=".48"/><stop offset="1" stop-color="#ffdba0" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1080" height="460" rx="24" fill="#f8f5ef"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif" fill="#444b3c">
+<text x="40" y="43" font-size="17" letter-spacing="2">小灯当家 · 三款经典台灯</text>
+<g transform="translate(95 80) scale(1.5)">
+ <ellipse cx="62" cy="93" rx="76" ry="70" fill="url(#glow)"/>
+ <rect x="58" y="48" width="8" height="59" fill="url(#brass)"/>
+ <path d="M26 115 Q26 100 62 100 Q99 100 99 115 L99 126 Q99 132 90 132 H35 Q26 132 26 126Z" fill="url(#greenBase)"/>
+ <path d="M1 62 C1 -18 123 -18 123 62 Q123 69 116 69 H8 Q1 69 1 62Z" fill="url(#green)"/>
+ <ellipse cx="62" cy="69" rx="61" ry="4.5" fill="#fff3ca"/>
+ <circle cx="62" cy="120" r="12" fill="url(#brass)" stroke="#a88b4d"/><path d="M60 113 L58 117" stroke="#fff5d4" stroke-width="2" stroke-linecap="round"/>
+</g>
+<g transform="translate(445 80) scale(1.5)">
+ <ellipse cx="62" cy="93" rx="76" ry="70" fill="url(#glow)"/>
+ <rect x="58" y="48" width="8" height="59" fill="url(#brass)"/>
+ <path d="M26 115 Q26 100 62 100 Q99 100 99 115 L99 126 Q99 132 90 132 H35 Q26 132 26 126Z" fill="url(#wood)"/>
+ <path d="M82 64 V92" stroke="url(#brass)" stroke-width="2"/><rect x="78" y="90" width="10" height="14" rx="5" fill="url(#brass)"/>
+ <path d="M32 5 H92 L113 71 H11Z" fill="url(#cloth)"/>
+ <g stroke="#856c3c" stroke-opacity=".13"><path d="M36 6 L20 70 M43 6 L32 70 M50 6 L44 70 M57 6 L56 70 M64 6 L68 70 M71 6 L80 70 M78 6 L92 70 M85 6 L104 70"/></g>
+ <path d="M12 69 H112" stroke="#fff3ca" stroke-width="3"/>
+</g>
+<g transform="translate(795 80) scale(1.5)">
+ <ellipse cx="62" cy="70" rx="76" ry="70" fill="url(#glow)"/>
+ <rect x="58" y="48" width="8" height="59" fill="url(#brass)"/>
+ <path d="M26 115 Q26 100 62 100 Q99 100 99 115 L99 126 Q99 132 90 132 H35 Q26 132 26 126Z" fill="url(#grey)"/>
+ <circle cx="62" cy="38" r="39" fill="url(#sphere)"/>
+</g>
+<g text-anchor="middle">
+ <text x="188" y="334" font-size="25" font-weight="600">蘑菇灯</text><text x="188" y="369" font-size="17" fill="#747869">点击底座小旋钮换光</text>
+ <text x="538" y="334" font-size="25" font-weight="600">布罩灯</text><text x="538" y="369" font-size="17" fill="#747869">按住拉绳下拉，松手换光</text>
+ <text x="888" y="334" font-size="25" font-weight="600">球形灯</text><text x="888" y="369" font-size="17" fill="#747869">划动灯球或滚动滚轮换光</text>
+</g>
+<text x="540" y="425" text-anchor="middle" font-size="14" fill="#8b8d80">依据应用 CSS 绘制的造型示意 · 非实机截图</text>
+</g></svg>
