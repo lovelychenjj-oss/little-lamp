@@ -1,0 +1,116 @@
+*{box-sizing:border-box}html,body{margin:0;background:transparent!important;overflow:hidden;width:112px;height:140px;font-family:-apple-system,'PingFang SC',sans-serif;user-select:none;-webkit-user-select:none}#lamp{position:relative;width:148px;height:180px;--glow:#fff3ca}#lamp[data-mode=dark]{--glow:#e8b76c}button{cursor:pointer}button:focus-visible{outline:2px solid #e9c78a;outline-offset:3px}#body{all:unset;position:absolute;left:12px;top:20px;width:124px;height:128px;cursor:grab;touch-action:none}#body:active{cursor:grabbing}.stem{position:absolute;left:58px;top:48px;width:8px;height:59px;background:linear-gradient(90deg,#80612b,#dfc784 45%,#94723b)}.shade{position:absolute;left:1px;top:0;width:122px;height:69px;border-radius:63px 63px 7px 7px;background:radial-gradient(ellipse at 34% 12%,#b8c49f,#8e9e79 42%,#65764f 95%);box-shadow:inset 0 1px 2px #e4ebc780,0 3px 5px #0002}.shade:after{content:'';position:absolute;left:0;bottom:-3px;width:122px;height:9px;border-radius:50%;background:var(--glow);box-shadow:0 5px 14px #f5d38c44}.base{position:absolute;left:26px;top:100px;width:73px;height:32px;border-radius:42% 42% 20% 20%;background:linear-gradient(110deg,#93a17d,#67774f);box-shadow:inset 0 1px 1px #ced9b788,0 3px 5px #0003}#knob{position:absolute;top:126px;left:60px;width:28px;height:28px;border-radius:50%;padding:0;border:1px solid #a88b4d;background:conic-gradient(#d8bd7c,#f0dca5,#a98c4d,#d8bd7c);box-shadow:0 2px 3px #0004;transform:rotate(-45deg);transition:transform .2s ease}#lamp[data-mode=dark] #knob{transform:rotate(45deg)}#knob span{position:absolute;left:12px;top:3px;width:2px;height:8px;border-radius:2px;background:#fff5d4}#knob:disabled{cursor:wait}#label{position:absolute;left:0;right:0;top:159px;font-size:11px;line-height:15px;text-align:center;color:#fff9eb;text-shadow:0 1px 3px #000,0 0 3px #000;opacity:0}#lamp:hover #label,#lamp:focus-within #label,#lamp.notice #label{opacity:1}#lamp.error #label{font-size:10px;line-height:12px;top:154px}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+#lamp[data-mode=warm]{--glow:#ffd18b}#lamp[data-mode=dim]{--glow:#ba935d}
+#lamp[data-mode=light] #knob{transform:rotate(-90deg)}
+#lamp[data-mode=warm] #knob{transform:rotate(-30deg)}
+#lamp[data-mode=dark] #knob{transform:rotate(30deg)}
+#lamp[data-mode=dim] #knob{transform:rotate(90deg)}
+#lamp[data-mode=dim] .shade:after{box-shadow:none}
+
+/* Compact desktop footprint; knob stays larger than a proportional shrink. */
+#lamp{transform:scale(.75);transform-origin:top left}
+#knob{width:36px;height:36px;left:56px;top:122px}
+#knob span{left:16px;top:4px;height:9px}
+#label{font-size:13px;top:162px}
+#lamp[data-skin=fabric] .shade{left:11px;top:5px;width:102px;height:66px;border-radius:4px;clip-path:polygon(21% 0,79% 0,100% 100%,0 100%);background:repeating-linear-gradient(90deg,#0000 0 5px,#856c3c18 5px 6px),linear-gradient(110deg,#fff7dc,#d9c79c 74%,#bca776);box-shadow:none}
+#lamp[data-skin=fabric] .shade:after{width:102px;height:5px;bottom:0;border-radius:0}
+#lamp[data-skin=fabric] .base{background:linear-gradient(110deg,#c8aa7c,#856749)}
+#lamp[data-skin=globe] .shade{left:23px;top:-1px;width:78px;height:78px;border-radius:50%;background:radial-gradient(circle at 30% 24%,#fffef4,var(--glow) 57%,#c3b485);box-shadow:inset -3px -5px 9px #8f79412b,0 3px 6px #0002}
+#lamp[data-skin=globe] .shade:after{display:none}
+#lamp[data-skin=globe] .base{background:linear-gradient(110deg,#b4bcb6,#728077)}
+
+/* Light is local to the lamp, with transparent edges inside its compact window. */
+#lamp{--light-rgb:255,243,211;--light-strength:.40;isolation:isolate}
+#lamp[data-mode=light]{--light-rgb:255,243,211;--light-strength:.40}
+#lamp[data-mode=warm]{--light-rgb:255,198,112;--light-strength:.64}
+#lamp[data-mode=dark]{--light-rgb:245,183,99;--light-strength:.38}
+#lamp[data-mode=dim]{--light-rgb:221,155,76;--light-strength:.17}
+.ambient-light,.down-light,.ground-light{position:absolute;display:block;pointer-events:none;z-index:0;opacity:var(--light-strength);transition:opacity .35s ease}
+.ambient-light{left:3px;top:2px;width:142px;height:150px;background:radial-gradient(ellipse at 50% 44%,rgba(var(--light-rgb),.54) 0%,rgba(var(--light-rgb),.24) 34%,rgba(var(--light-rgb),0) 70%)}
+.down-light{left:7px;top:78px;width:134px;height:77px;background:radial-gradient(ellipse at 50% 0%,rgba(var(--light-rgb),.85) 0%,rgba(var(--light-rgb),.38) 38%,rgba(var(--light-rgb),0) 72%)}
+.ground-light{left:7px;top:132px;width:134px;height:30px;background:radial-gradient(ellipse at center,rgba(var(--light-rgb),.65) 0%,rgba(var(--light-rgb),.26) 36%,rgba(var(--light-rgb),0) 70%)}
+#body{z-index:1}#knob{z-index:2}#label{z-index:3}
+/* Reflect a little of the same light on the upper surface of the base. */
+.base:after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(var(--light-rgb),.65),rgba(var(--light-rgb),0) 72%);opacity:var(--light-strength);transition:opacity .35s ease}
+#lamp .shade:after{box-shadow:0 4px 10px rgba(var(--light-rgb),.20)}
+#lamp[data-mode=dim] .shade:after{box-shadow:0 2px 5px rgba(var(--light-rgb),.08)}
+#lamp[data-skin=fabric] .down-light{left:15px;top:80px;width:118px;height:74px}
+#lamp[data-skin=globe] .ambient-light{left:3px;top:0;width:142px;height:140px;background:radial-gradient(ellipse at 50% 43%,rgba(var(--light-rgb),.70) 0%,rgba(var(--light-rgb),.30) 36%,rgba(var(--light-rgb),0) 70%)}
+#lamp[data-skin=globe] .down-light{left:26px;top:85px;width:96px;height:65px}
+
+/* Each fixture has its own physical control. */
+#knob{width:24px;height:24px;left:62px;top:128px}
+#knob:before{content:'';position:absolute;inset:-6px;border-radius:50%}
+#knob span{left:10px;top:3px;width:2px;height:6px}
+#lamp[data-skin=fabric] #knob,#lamp[data-skin=globe] #knob{display:none}
+#pull,#sphere-touch{display:none;position:absolute;padding:0;border:0;background:transparent;z-index:2;touch-action:none}
+#lamp[data-skin=fabric] #pull{display:block;left:94px;top:83px;width:28px;height:70px;cursor:grab;--pull:0px}
+.cord{position:absolute;top:0;left:13px;width:2px;height:calc(28px + var(--pull));border-radius:1px;background:linear-gradient(90deg,#91733f,#f6e2ae);transition:height .18s ease-out;pointer-events:none}
+.bead{position:absolute;left:9px;top:calc(26px + var(--pull));width:10px;height:14px;border-radius:5px;background:linear-gradient(110deg,#eed8a0,#a27b39);box-shadow:0 1px 2px #0003;transition:top .18s ease-out;pointer-events:none}
+#pull.gesture-active .cord,#pull.gesture-active .bead{transition:none}
+#lamp[data-skin=globe] #sphere-touch{display:block;left:35px;top:19px;width:78px;height:78px;border-radius:50%;cursor:grab}
+#sphere-touch.gesture-active{cursor:grabbing;box-shadow:inset 0 0 18px rgba(var(--light-rgb),.42)}
+#pull:disabled,#sphere-touch:disabled{cursor:wait}
+/* State remains available to assistive technology without a visible caption. */
+#lamp #label{left:0;top:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;opacity:0}
+
+#lamp[data-skin=fabric] #pull.gesture-active{cursor:grabbing}
+#lamp[data-skin=fabric] #pull:disabled{cursor:wait}
+
+/* Hover-only minimize control. Focus access is retained for keyboard users. */
+#minimize{position:absolute;right:3px;top:3px;z-index:5;width:24px;height:24px;padding:0;border:1px solid #bcb7a955;border-radius:50%;background:#fffaf0e8;color:#5d6254;font:20px/20px -apple-system,sans-serif;box-shadow:0 1px 4px #0002;opacity:0;pointer-events:none;transition:opacity .15s ease,background .15s ease}
+#lamp:hover #minimize,#lamp:focus-within #minimize{opacity:1;pointer-events:auto}
+#minimize:hover{background:#fffdf6}#minimize:active{background:#e7e2d5}
+
+/* Approved 3D collection: transparent atlas, no baked card or caption. */
+html,body{width:100vw;height:100vh}
+.artwork{display:none;pointer-events:none}
+#lamp[data-kind=pendant],#lamp[data-kind=floor]{transform:none;width:var(--widget-width);height:var(--widget-height)}
+#lamp[data-kind=pendant] #body,#lamp[data-kind=floor] #body{left:0;top:0;width:100%;height:100%}
+#lamp[data-kind=pendant] #body{cursor:grab}
+#lamp[data-kind=pendant] .stem,#lamp[data-kind=pendant] .shade,#lamp[data-kind=pendant] .base,#lamp[data-kind=floor] .stem,#lamp[data-kind=floor] .shade,#lamp[data-kind=floor] .base{display:none}
+#lamp[data-kind=pendant] .artwork,#lamp[data-kind=floor] .artwork{display:block;position:absolute;background-image:url('artwork/lamps-3d.png');background-size:400% 200%;background-position:var(--sprite-x) var(--sprite-y);background-repeat:no-repeat;transition:filter .3s ease}
+#lamp[data-kind=pendant] .artwork{left:0;top:-20px;width:144px;height:216px}
+#lamp[data-kind=floor] .artwork{left:-24px;top:6px;width:192px;height:288px}
+#lamp[data-mode=warm] .artwork{filter:sepia(.09) saturate(1.06)}
+#lamp[data-mode=dark] .artwork{filter:brightness(.90)}
+#lamp[data-mode=dim] .artwork{filter:brightness(.72)}
+#lamp[data-kind=pendant] #knob,#lamp[data-kind=floor] #knob{display:none}
+#lamp[data-kind=pendant][data-control=pull] #pull,#lamp[data-kind=floor][data-control=pull] #pull{display:block;left:64px;top:140px;width:28px;height:76px;--pull:0px;cursor:grab}
+#lamp[data-skin=enamel] #pull{left:101px;top:136px}
+#lamp[data-skin=bell] #pull{left:78px;top:142px}
+#lamp[data-kind=floor][data-control=pull] #pull{left:66px;top:82px}
+#lamp[data-kind=pendant] .cord,#lamp[data-kind=floor] .cord{background:repeating-linear-gradient(to bottom,#f2d394 0 2px,#9b752d 2px 3px);width:2px}
+#lamp[data-skin=petal] .bead{border-radius:70% 70% 55% 55%;height:13px}
+#lamp[data-skin=enamel] .bead{border-radius:4px 4px 1px 1px;background:repeating-linear-gradient(90deg,#586148 0 2px,#a5aa88 2px 3px)}
+#lamp[data-skin=bell] .bead{border-radius:50%;height:10px;background:#77856c;box-shadow:0 8px 0 #dba296}
+#lamp #pull.gesture-active{cursor:grabbing}
+#lamp[data-kind=pendant][data-control=touch] #sphere-touch{display:block;left:7px;top:46px;width:130px;height:132px;border-radius:45%;cursor:grab}
+#lamp[data-skin=paper] #sphere-touch{left:24px;top:38px;width:96px;height:142px}
+#lamp #sphere-touch.gesture-active{cursor:grabbing}
+#lamp[data-kind=pendant] .ambient-light{left:0;top:25px;width:144px;height:174px}
+#lamp[data-kind=pendant] .down-light{left:0;top:135px;width:144px;height:83px}
+#lamp[data-kind=pendant] .ground-light{display:none}
+#lamp[data-kind=floor] .ambient-light{left:0;top:15px;width:127px;height:115px}
+#lamp[data-kind=floor] .down-light{left:0;top:77px;width:115px;height:83px}
+#lamp[data-kind=floor] .ground-light{left:10px;top:274px;width:130px;height:25px}
+#lamp[data-kind=pendant] #minimize,#lamp[data-kind=floor] #minimize{width:20px;height:20px;font-size:17px;line-height:17px}
+#lamp #pull:disabled,#lamp #sphere-touch:disabled{cursor:wait}
+
+/* Smaller pendants: place canopy above the window, leaving the suspension cord
+   entering naturally from the visible screen edge. No bitmap modification. */
+#lamp[data-kind=pendant]{width:144px;height:208px;transform:scale(.75);transform-origin:top left}
+#lamp[data-kind=pendant] .artwork{top:-44px}
+#lamp[data-kind=pendant][data-control=pull] #pull{top:116px}
+#lamp[data-skin=enamel] #pull{top:112px}
+#lamp[data-skin=bell] #pull{top:118px}
+#lamp[data-kind=pendant][data-control=touch] #sphere-touch{top:22px}
+#lamp[data-skin=paper] #sphere-touch{top:14px}
+#lamp[data-kind=pendant] .ambient-light{top:1px}
+#lamp[data-kind=pendant] .down-light{top:111px}
+#lamp[data-kind=pendant] #minimize{width:24px;height:24px;font-size:20px;line-height:20px}
+
+/* A separate move handle avoids stealing pull/touch light gestures. */
+#drag-handle{position:absolute;z-index:30;top:2px;left:2px;width:24px;height:24px;padding:0;border:0;border-radius:50%;background:rgba(255,248,232,.92);color:#67594a;font:20px/24px sans-serif;cursor:grab;opacity:0;pointer-events:none;touch-action:none}
+#lamp:hover #drag-handle,#lamp:focus-within #drag-handle{opacity:1;pointer-events:auto}
+#drag-handle:active,#body:active{cursor:grabbing}

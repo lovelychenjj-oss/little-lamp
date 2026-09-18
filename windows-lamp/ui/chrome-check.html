@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>小灯当家 · Chrome 外观检查</title><style>
+:root{color-scheme:light dark}body{margin:60px auto;padding:0 24px;max-width:740px;font:17px/1.8 system-ui;background:#fbf9f3;color:#252a24}h1{font-size:30px}h2{font-size:21px;margin-top:32px}#status{font-size:26px;font-weight:600}small{color:#676e64}button{font:inherit;padding:8px 16px;cursor:pointer}textarea{width:100%;min-height:130px;font:14px/1.5 monospace}a{color:inherit}li{margin:10px 0}@media(prefers-color-scheme:dark){body{background:#232722;color:#f2eedf}small{color:#bfc5b9}}
+</style><h1>Chrome 有没有收到外观变化？</h1><p id="status" role="status" aria-live="polite"></p><small id="browser"></small>
+<p>保持此页打开，点击小灯在「日间」和「夜读」之间切换。此页背景和上面的文字应一起改变。暖光与日间都对应浅色，微光与夜读都对应深色；滤色不会改变下面检测到的主题值。</p>
+<h2>如果 Chrome 整体不变</h2><ol><li>在 Chrome 打开一个普通新标签页，点击右下角「自定义 Chrome」，在「外观」中选择「设备」。</li><li>关闭旧版小灯当家扩展并刷新本页。扩展可能改写背景，让检查结果难以判断。</li><li>打开 macOS「系统设置 → 外观」，确认小灯切换日间／夜读时，系统设置本身是否改变。</li></ol>
+<p>系统设置不变：回到小灯菜单，运行「检查 Chrome 外观」，查看系统读取结果或授权错误。系统设置变、本页主题文字不变：先确认 Chrome 选择了「设备」；保存工作后退出并重开 Chrome再测。本页文字和背景都变、其他网站不变：这些网站可能有自己的主题设置，或没有适配深色模式。</p>
+<p>如果安装了第三方 Chrome 主题，可以在 Chrome 设置 → 外观检查主题；必要时手动恢复默认主题后重试。此工具不会自动改动你的主题、标签页或浏览记录。</p>
+<h2>本次检查记录</h2><p>只记录本页收到的主题变化，不读取浏览历史或其他标签页。没有检测到变化时，不代表已确定原因。</p><textarea id="report" readonly aria-label="检查记录"></textarea><p><button id="copy">复制检查记录</button> <span id="copy-status" role="status"></span></p>
+<p><a href="https://support.google.com/chrome/answer/9275525?hl=zh-Hans">Google 官方：Chrome 的浅色、深色与设备外观设置</a></p><script src="chrome-check.js"></script></html>
